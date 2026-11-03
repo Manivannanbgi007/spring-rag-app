@@ -1,0 +1,167 @@
+# ============================================================
+# Infrastructure for the HRM Policy Chatbot (Spring AI + RAG)
+#
+# Start everything :  docker compose up -d
+# Check status     :  docker compose ps
+# Watch logs       :  docker compose logs -f
+# Stop (keep data) :  docker compose down
+# Stop + DELETE data: docker compose down -v
+#
+# All settings (ports, passwords, model names) live in the .env file,
+# so you never need to edit this file for normal use.
+# ============================================================
+
+name: spring-rag-app
+
+services:
+
+  # ----------------------------------------------------------
+  # 1. PostgreSQL + pgvector
+  #    One database stores: vectors (document chunks), document
+  #    status, chat history and feedback.
+  # ----------------------------------------------------------
+  postgres:
+    image: pgvector/pgvector:0.8.7-pg17     # pinned version: same result on every machine
+    container_name: rag-postgres
+    restart: unless-stopped                 # comes back after a reboot or crash
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is missing in .env}
+    ports:
+      # 127.0.0.1 = reachable only from your own computer, not from the network
+      - "127.0.0.1:${POSTGRES_PORT}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data   # data survives container restarts
+    shm_size: 256mb                         # PostgreSQL needs some shared memory for big queries
+    healthcheck:                            # Docker marks the container "healthy" only when DB accepts connections
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+    logging:                                # stop log files from growing forever
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # ----------------------------------------------------------
+  # 2. Ollama = runs the AI models locally (no API key, no cost)
+  #    - chat model      : writes the answers
+  #    - embedding model : turns text into vectors for search
+  #    Part of the "ollama" profile (set in .env). If you later
+  #    switch to OpenAI, remove the profile and this is skipped.
+  # ----------------------------------------------------------
+  ollama:
+    image: ollama/ollama:0.40.10
+    container_name: rag-ollama
+    profiles: ["ollama"]
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${OLLAMA_PORT}:11434"
+    environment:
+      OLLAMA_KEEP_ALIVE: 30m                # keep model in memory between questions (faster answers)
+    volumes:
+      - ollama-data:/root/.ollama           # downloaded models are saved here (several GB)
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 8g
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # ----------------------------------------------------------
+  # 3. One-time job: download the models, then exit.
+  #    Runs only after Ollama is healthy. Re-running is safe;
+  #    already downloaded models are skipped quickly.
+  # ----------------------------------------------------------
+  ollama-model-puller:
+    image: ollama/ollama:0.40.10
+    container_name: rag-ollama-model-puller
+    profiles: ["ollama"]
+    restart: "no"                           # a job, not a service: do not restart after it finishes
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      OLLAMA_HOST: http://ollama:11434      # talk to the ollama container over the Docker network
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        echo "Pulling chat model: ${CHAT_MODEL}"
+        ollama pull ${CHAT_MODEL}
+        echo "Pulling embedding model: ${EMBEDDING_MODEL}"
+        ollama pull ${EMBEDDING_MODEL}
+        echo "All models ready."
+
+  # ----------------------------------------------------------
+  # 4. Monitoring (optional). Start with:  docker compose --profile monitoring up -d
+  #    Prometheus collects the numbers of the application and checks the alert rules.
+  #    Jaeger shows a trace: one question, step by step (search, embedding, model ...).
+  #    The application only sends traces when it is started with TRACING_EXPORT=true.
+  # ----------------------------------------------------------
+  prometheus:
+    image: prom/prometheus:v3.15.1
+    container_name: rag-prometheus
+    profiles: ["monitoring"]
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${PROMETHEUS_PORT:-9190}:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./monitoring/alert-rules.yml:/etc/prometheus/alert-rules.yml:ro
+      - prometheus-data:/prometheus
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # lets the container reach the application on your computer (also on Linux)
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:9090/-/healthy"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  jaeger:
+    image: jaegertracing/jaeger:2.22.0
+    container_name: rag-jaeger
+    profiles: ["monitoring"]
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${JAEGER_UI_PORT:-16690}:16686"      # the web page
+      - "127.0.0.1:${JAEGER_OTLP_PORT:-14318}:4318"     # where the application sends its traces (OTLP over HTTP)
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# Named volumes = Docker-managed storage that outlives containers
+volumes:
+  postgres-data:
+  ollama-data:
+  prometheus-data:

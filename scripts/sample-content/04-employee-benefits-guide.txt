@@ -1,0 +1,102 @@
+# Employee Benefits Guide
+
+Northwind Ltd - Policy owner: People and Culture and Finance - Effective 1 January 2026 - Version 2026-01
+
+## 1. Overview
+
+Northwind Ltd offers a benefits package that supports health, security, learning and daily life. Benefits start on the first day of employment unless a section says otherwise. Some benefits depend on the grade of the employee (see section 9). Questions go to the HR helpdesk at hr-help@northwind.example or +1 (555) 010-4400.
+
+## 2. Health benefits
+
+### 2.1 Health insurance
+
+The company pays 100 percent of the health insurance premium for the employee and 60 percent of the premium for dependants (spouse, partner and children). Coverage starts on the first day of employment and includes doctor visits, hospital stays, prescription medicine, and maternity care. The yearly deductible is 200 USD per person. Employees choose between the Standard plan and the Plus plan. The Plus plan has a higher premium, of which the employee pays the extra part.
+
+### 2.2 Dental and vision
+
+Dental care is covered up to 1,200 USD per person per year, including 2 check-ups and 1 professional cleaning. Vision care covers one eye test per year and glasses or contact lenses up to 300 USD every 2 years.
+
+### 2.3 Life and disability insurance
+
+The company pays a life insurance of 3 times the annual salary, and a disability insurance that pays 70 percent of the salary after 6 months of illness, until retirement age. Employees name their beneficiaries in PeopleHub.
+
+### 2.4 Health and fitness
+
+Employees receive a gym or sports allowance of 40 USD per month. It is paid after the employee uploads the monthly receipt in PeopleHub. Free flu vaccination is offered every autumn at all offices. Employees may also use the Employee Assistance Programme at +1 (555) 010-5500 (24 hours a day).
+
+## 3. Retirement and financial benefits
+
+### 3.1 Pension plan
+
+The company matches the pension contributions of the employee up to 6 percent of the gross salary. An employee who pays 6 percent therefore receives a company contribution of 6 percent. Employees join the plan after 1 month of employment. The matching contribution belongs fully to the employee after 2 years of service.
+
+### 3.2 Employee stock purchase plan
+
+Employees may buy company shares through payroll deduction of up to 5 percent of the salary. Shares are bought every 6 months at a discount of 10 percent below the market price. Employees can sell the shares after a holding period of 12 months.
+
+### 3.3 Annual bonus
+
+Many roles have a yearly bonus. The target bonus depends on the grade: 5 percent of the annual salary for grades G1 to G4, 8 percent for G5 to G8, 12 percent for G9 and G10, and 20 percent for G11 and G12. The payout depends on company results and personal performance and is paid in March.
+
+### 3.4 Salary review
+
+Salaries are reviewed once per year, with the new salary valid from 1 January. The decision is based on the performance rating, the market, and the company budget.
+
+## 4. Learning and development
+
+Each employee has an annual learning budget for courses, conferences, books and certificates. The budget depends on the grade, from 1,500 USD for grades G1 and G2 to 5,000 USD for grades G11 and G12 (see the table in section 9). Unused budget does not carry over to the next year.
+
+- Courses and conferences are requested in PeopleHub at least 10 working days before they start. The manager approves the request.
+- The company pays the fee directly or reimburses it after the course, with the receipt uploaded within 30 days.
+- Employees who leave within 12 months after a course that cost more than 2,000 USD repay a share of the fee, which reduces by 1/12 each month.
+- Employees also receive 5 days of study leave per year for approved courses and exams (see the Leave Policy).
+- The internal Northwind Academy offers free courses on leadership, data skills, languages and security.
+
+## 5. Work-related allowances
+
+### 5.1 Home office allowance
+
+Employees receive a one-time home office allowance of 400 USD to buy a desk, a chair or other equipment for working at home. In addition, the company pays 50 USD per month towards internet and phone costs for employees who work remotely at least 2 days a week. The allowance can be requested again after 4 years.
+
+### 5.2 Equipment
+
+Every employee receives a laptop, a headset and a phone or phone allowance. Laptops are replaced after 4 years. Employees who need special equipment, for medical reasons or for their role, ask the IT service desk.
+
+### 5.3 Meals and transport
+
+Employees at offices without a canteen receive meal vouchers of 8 USD per working day. Employees who travel to the office by public transport can have the cost of a monthly pass reimbursed up to 120 USD per month. Employees who cycle to work can use the cycle-to-work scheme, which lets them buy a bicycle of up to 1,500 USD through salary sacrifice.
+
+### 5.4 Childcare
+
+The company pays a childcare allowance of 150 USD per month for each child up to 6 years of age, with a maximum of 450 USD per month.
+
+## 6. Recognition and gifts
+
+- Employee referral bonus: 1,000 USD for every successful referral. It is paid after the new colleague has completed 6 months of employment.
+- Long service awards: a gift and a day of extra leave at 5 years, 10 years and 15 years of service.
+- Wedding gift: 100 USD. Gift for a newborn child: 150 USD.
+- Spot awards: managers can give a spot award of up to 250 USD for exceptional work, and up to 1,000 USD with the approval of the head of department.
+
+## 7. Relocation and international assignments
+
+Employees who move to a new office at the request of the company receive a relocation package: removal costs, temporary housing for up to 60 days, one trip home, and a one-time relocation payment of 2,500 USD. Employees who leave within 12 months after the move repay the relocation payment in full. International assignments are arranged individually with the Global Mobility team.
+
+## 8. Benefits during leave and when leaving
+
+Health insurance and pension continue during paid leave. During unpaid leave, they continue for the first 4 weeks (see the Leave Policy). When employment ends, health insurance stops at the end of the month, and the employee can continue the cover privately. Unused learning budget and allowances expire on the last working day.
+
+## 9. Benefits by grade
+
+| Grade | Annual leave | Learning budget | Target bonus |
+| G1 and G2 | 25 days | 1,500 USD | 5 percent (G1 to G4) |
+| G3 and G4 | 25 days | 2,000 USD | 5 percent (G1 to G4) |
+| G5 and G6 | 25 days (G5), 27 days (G6) | 2,500 USD | 8 percent (G5 to G8) |
+| G7 and G8 | 27 days | 3,000 USD | 8 percent (G5 to G8) |
+| G9 and G10 | 27 days (G9), 30 days (G10) | 4,000 USD | 12 percent |
+| G11 and G12 | 30 days | 5,000 USD | 20 percent |
+
+More details for every single grade, such as travel class and spending limits, are in Annex B of the Complete Employee Handbook.
+
+## 10. How to claim
+
+Most benefits are claimed in PeopleHub under My Benefits: choose the benefit, enter the amount, and upload the receipt. Claims are paid with the next monthly salary when they are submitted before the 20th of the month. Claims must be submitted within 30 days of the purchase. Forms for special cases (for example HR-150 for the relocation package) are listed in Annex C of the Complete Employee Handbook.

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HRM Policy Assistant</title>
+<style>
+  :root {
+    --bg: #f4f6f8; --panel: #ffffff; --text: #1d2733; --muted: #6a7785; --border: #dde3e9;
+    --accent: #2457c5; --accent-text: #ffffff; --user: #e3ecfb; --bot: #f1f3f5;
+    --ok: #1c7c3c; --warn: #a76100; --bad: #b3261e;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12171d; --panel: #1b222a; --text: #e6ebf0; --muted: #93a0ad; --border: #2c3641;
+      --accent: #6d97ee; --accent-text: #0d1117; --user: #243553; --bot: #242d37;
+      --ok: #55c27b; --warn: #e0a043; --bad: #f08c85;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, Segoe UI, Roboto, sans-serif; background: var(--bg); color: var(--text); }
+  header { padding: 14px 20px; border-bottom: 1px solid var(--border); background: var(--panel); }
+  header h1 { margin: 0; font-size: 18px; }
+  header p { margin: 2px 0 0; font-size: 13px; color: var(--muted); }
+  main { display: grid; grid-template-columns: 340px 1fr; gap: 16px; padding: 16px; height: calc(100vh - 66px); }
+  section { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px; overflow: auto; }
+  h2 { font-size: 15px; margin: 0 0 10px; }
+  label { display: block; font-size: 12px; color: var(--muted); margin: 8px 0 3px; }
+  input[type=text], input[type=file] { width: 100%; padding: 7px; border: 1px solid var(--border); border-radius: 6px;
+    background: var(--bg); color: var(--text); font-size: 13px; }
+  button { cursor: pointer; border: 0; border-radius: 6px; padding: 8px 14px; font-size: 13px;
+    background: var(--accent); color: var(--accent-text); }
+  button:disabled { opacity: .5; cursor: default; }
+  button.small { padding: 3px 8px; font-size: 12px; background: transparent; color: var(--text); border: 1px solid var(--border); }
+  button.small.danger { color: var(--bad); }
+  button.small.selected { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  details { margin-top: 14px; border-top: 1px solid var(--border); padding-top: 10px; }
+  summary { cursor: pointer; font-size: 15px; font-weight: 600; }
+  #uploadMsg { font-size: 12px; margin-top: 8px; min-height: 16px; }
+  .doc, .conv { border: 1px solid var(--border); border-radius: 8px; padding: 9px; margin-top: 8px; font-size: 13px; }
+  .conv.active { border-color: var(--accent); }
+  .conv .title { cursor: pointer; font-weight: 600; word-break: break-word; }
+  .doc .title { font-weight: 600; word-break: break-word; }
+  .meta { color: var(--muted); font-size: 12px; margin-top: 3px; }
+  .badge { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 11px; font-weight: 600;
+    border: 1px solid currentColor; margin-right: 6px; }
+  .COMPLETED { color: var(--ok); } .FAILED { color: var(--bad); }
+  .QUEUED, .PARSING, .EMBEDDING { color: var(--warn); }
+  #chatPanel { display: flex; flex-direction: column; }
+  #chatHeader { display: flex; justify-content: space-between; align-items: center; }
+  #messages { flex: 1; overflow-y: auto; padding-right: 4px; }
+  .msg { max-width: 85%; padding: 10px 12px; border-radius: 10px; margin: 8px 0; white-space: pre-wrap; word-break: break-word; font-size: 14px; line-height: 1.45; }
+  .msg.user { background: var(--user); margin-left: auto; }
+  .msg.bot { background: var(--bot); }
+  .msg.notfound { border-left: 4px solid var(--warn); }
+  .msg.error { border-left: 4px solid var(--bad); }
+  .degraded { margin-top: 8px; padding: 6px 8px; border-radius: 6px; border: 1px solid var(--warn); color: var(--warn);
+    font-size: 12px; white-space: normal; }
+  .rewritten { font-size: 12px; color: var(--muted); font-style: italic; white-space: normal; margin-bottom: 6px; }
+  .sources { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); font-size: 12px; white-space: normal; }
+  .source { margin-top: 6px; }
+  .source b { font-weight: 600; }
+  .source q { color: var(--muted); display: block; font-style: italic; quotes: none; margin-top: 2px; }
+  .feedback { margin-top: 8px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; white-space: normal; }
+  .feedback span { font-size: 12px; color: var(--muted); }
+  form#chatForm { display: flex; gap: 8px; margin-top: 10px; }
+  form#chatForm input { flex: 1; padding: 10px; border: 1px solid var(--border); border-radius: 8px;
+    background: var(--bg); color: var(--text); font-size: 14px; }
+  .hint { color: var(--muted); font-size: 13px; }
+  @media (max-width: 800px) { main { grid-template-columns: 1fr; height: auto; } #chatPanel { min-height: 70vh; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>HRM Policy Assistant</h1>
+  <p>Upload policy documents, then ask questions. Answers come only from the uploaded documents.</p>
+</header>
+
+<main>
+  <section>
+    <div id="chatHeader">
+      <h2>Conversations</h2>
+      <button type="button" class="small" id="newChatBtn">New chat</button>
+    </div>
+    <div id="conversations"></div>
+
+    <details>
+      <summary>Documents</summary>
+      <form id="uploadForm">
+        <label for="file">PDF or DOCX file (max 500 pages)</label>
+        <input type="file" id="file" accept=".pdf,.docx" required>
+        <label for="title">Title (optional)</label>
+        <input type="text" id="title" maxlength="255" placeholder="Leave Policy">
+        <label for="version">Version</label>
+        <input type="text" id="version" value="1.0" maxlength="30">
+        <p><button type="submit" id="uploadBtn">Upload</button></p>
+        <div id="uploadMsg"></div>
+      </form>
+      <div id="docs"></div>
+    </details>
+  </section>
+
+  <section id="chatPanel">
+    <h2 id="chatTitle">Ask a question</h2>
+    <div id="messages"></div>
+    <form id="chatForm">
+      <input type="text" id="question" maxlength="1000" placeholder="Ask about leave, benefits, rules..." autocomplete="off" required>
+      <button type="submit" id="sendBtn">Send</button>
+    </form>
+  </section>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+
+// ---------------- Who am I? ----------------
+// There is no login yet. The browser makes up a user id once and sends it with every request,
+// so each browser only sees its own conversations. (Real authentication can replace this later.)
+function getUserId() {
+  let id = null;
+  try { id = localStorage.getItem('rag-user-id'); } catch (e) { /* storage blocked */ }
+  if (!id) {
+    id = 'user-' + Math.random().toString(36).slice(2, 10);
+    try { localStorage.setItem('rag-user-id', id); } catch (e) { /* ignore */ }
+  }
+  return id;
+}
+const USER_ID = getUserId();
+
+// fetch() that always sends the user id
+function api(path, options = {}) {
+  const headers = Object.assign({ 'X-User-Id': USER_ID }, options.headers || {});
+  return fetch(path, Object.assign({}, options, { headers }));
+}
+
+let currentConversationId = null;
+
+// ---------------- Documents ----------------
+
+async function loadDocuments() {
+  try {
+    const res = await api('/api/documents');
+    renderDocuments(await res.json());
+  } catch (e) { /* server may be restarting; try again on the next tick */ }
+}
+
+function renderDocuments(docs) {
+  const box = $('docs');
+  box.textContent = '';
+  if (docs.length === 0) {
+    const p = document.createElement('p');
+    p.className = 'hint';
+    p.textContent = 'No documents yet.';
+    box.append(p);
+    return;
+  }
+  for (const d of docs) {
+    const div = document.createElement('div');
+    div.className = 'doc';
+
+    const title = document.createElement('div');
+    title.className = 'title';
+    title.textContent = d.title + ' (v' + d.version + ')';
+
+    const badge = document.createElement('span');
+    badge.className = 'badge ' + d.status;
+    badge.textContent = d.status;
+
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    const details = [];
+    if (d.pageCount) details.push(d.pageCount + (d.pageCount === 1 ? ' page' : ' pages'));
+    if (d.chunkCount) details.push(d.chunkCount + (d.chunkCount === 1 ? ' chunk' : ' chunks'));
+    meta.append(badge, d.statusMessage || '', details.length ? ' | ' + details.join(', ') : '');
+
+    const del = document.createElement('button');
+    del.className = 'small danger';
+    del.textContent = 'Delete';
+    del.disabled = ['QUEUED', 'PARSING', 'EMBEDDING'].includes(d.status);
+    del.onclick = () => deleteDocument(d.id);
+    meta.append(' ', del);
+
+    div.append(title, meta);
+    box.append(div);
+  }
+}
+
+async function deleteDocument(id) {
+  if (!confirm('Delete this document and its searchable content?')) return;
+  await api('/api/documents/' + id, { method: 'DELETE' });
+  loadDocuments();
+}
+
+$('uploadForm').onsubmit = async (event) => {
+  event.preventDefault();
+  const msg = $('uploadMsg');
+  const form = new FormData();
+  form.append('file', $('file').files[0]);
+  if ($('title').value.trim()) form.append('title', $('title').value.trim());
+  form.append('version', $('version').value.trim() || '1.0');
+
+  $('uploadBtn').disabled = true;
+  msg.style.color = 'var(--muted)';
+  msg.textContent = 'Uploading...';
+  try {
+    const res = await api('/api/documents', { method: 'POST', body: form });
+    if (res.ok) {
+      msg.style.color = 'var(--ok)';
+      msg.textContent = 'Uploaded. Processing in the background...';
+      $('uploadForm').reset();
+      $('version').value = '1.0';
+    } else {
+      const problem = await res.json();
+      msg.style.color = 'var(--bad)';
+      msg.textContent = problem.detail || 'Upload failed.';
+    }
+  } catch (e) {
+    msg.style.color = 'var(--bad)';
+    msg.textContent = 'Could not reach the server.';
+  }
+  $('uploadBtn').disabled = false;
+  loadDocuments();
+};
+
+// ---------------- Conversations ----------------
+
+async function loadConversations() {
+  try {
+    const res = await api('/api/conversations');
+    renderConversations(await res.json());
+  } catch (e) { /* ignore, try again later */ }
+}
+
+function renderConversations(list) {
+  const box = $('conversations');
+  box.textContent = '';
+  if (list.length === 0) {
+    const p = document.createElement('p');
+    p.className = 'hint';
+    p.textContent = 'No conversations yet. Ask a question to start one.';
+    box.append(p);
+    return;
+  }
+  for (const c of list) {
+    const div = document.createElement('div');
+    div.className = 'conv' + (c.id === currentConversationId ? ' active' : '');
+
+    const title = document.createElement('div');
+    title.className = 'title';
+    title.textContent = c.title;
+    title.onclick = () => openConversation(c.id);
+
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.append(new Date(c.lastActivityAt).toLocaleString() + (c.expired ? ' (expired, read only)' : '') + ' ');
+
+    const exportBtn = document.createElement('button');
+    exportBtn.className = 'small';
+    exportBtn.textContent = 'Export';
+    exportBtn.onclick = () => exportConversation(c.id);
+
+    const delBtn = document.createElement('button');
+    delBtn.className = 'small danger';
+    delBtn.textContent = 'Delete';
+    delBtn.onclick = () => deleteConversation(c.id);
+
+    meta.append(exportBtn, ' ', delBtn);
+    div.append(title, meta);
+    box.append(div);
+  }
+}
+
+async function openConversation(id) {
+  const res = await api('/api/conversations/' + id + '/messages');
+  if (!res.ok) return;
+  currentConversationId = id;
+  $('messages').textContent = '';
+  for (const m of await res.json()) {
+    if (m.role === 'USER') {
+      addMessage(m.content, 'user');
+    } else {
+      const bubble = addMessage('', 'bot');
+      renderAnswer(bubble, { answer: m.content, found: m.found, sources: m.sources || [],
+                             messageId: m.id, feedback: m.feedback });
+    }
+  }
+  loadConversations();
+}
+
+function newChat() {
+  currentConversationId = null;
+  $('messages').textContent = '';
+  showWelcome();
+  loadConversations();
+  $('question').focus();
+}
+
+async function deleteConversation(id) {
+  if (!confirm('Delete this conversation, including its messages and feedback?')) return;
+  await api('/api/conversations/' + id, { method: 'DELETE' });
+  if (id === currentConversationId) newChat(); else loadConversations();
+}
+
+// The export needs the user id header, so it is fetched with JavaScript and saved as a file
+async function exportConversation(id) {
+  const res = await api('/api/conversations/' + id + '/export');
+  if (!res.ok) return;
+  const blob = await res.blob();
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'conversation-' + id + '.json';
+  link.click();
+  URL.revokeObjectURL(link.href);
+}
+
+$('newChatBtn').onclick = newChat;
+
+// ---------------- Chat ----------------
+
+function showWelcome() {
+  const p = document.createElement('p');
+  p.className = 'hint';
+  p.textContent = 'Try: "How many days of annual leave do I get?" Then ask a follow-up such as "And what about sick leave?"';
+  $('messages').append(p);
+}
+
+function addMessage(text, cssClass) {
+  const div = document.createElement('div');
+  div.className = 'msg ' + cssClass;
+  div.textContent = text;
+  const box = $('messages');
+  box.append(div);
+  box.scrollTop = box.scrollHeight;
+  return div;
+}
+
+// Final form of an answer: text, sources and feedback buttons
+function renderAnswer(bubble, data) {
+  bubble.textContent = data.answer;
+  (bubble.closest('.msg') || bubble).classList.toggle('notfound', !data.found);
+  if (data.degraded) {
+    // a part of the system was not available: tell the user that this answer is limited
+    const note = document.createElement('div');
+    note.className = 'degraded';
+    note.textContent = 'Limited answer: a part of the system is not available right now. Please try again in a few minutes.';
+    bubble.append(note);
+  }
+  showSources(bubble, data.sources);
+  showFeedback(bubble, data.messageId, data.feedback);
+}
+
+function showSources(bubble, sources) {
+  if (!sources.length) return;
+  const box = document.createElement('div');
+  box.className = 'sources';
+  const heading = document.createElement('b');
+  heading.textContent = 'Sources';
+  box.append(heading);
+  for (const s of sources) {
+    const where = s.pageNumber ? 'page ' + s.pageNumber : (s.section ? 'section: ' + s.section : '');
+    const item = document.createElement('div');
+    item.className = 'source';
+    const name = document.createElement('b');
+    name.textContent = s.title + ' (v' + s.version + ', ' + s.fileName + ') ' + where;
+    const quote = document.createElement('q');
+    quote.textContent = '"' + s.snippet + '"';
+    item.append(name, quote);
+    box.append(item);
+  }
+  bubble.append(box);
+}
+
+function showFeedback(bubble, messageId, existingRating) {
+  const bar = document.createElement('div');
+  bar.className = 'feedback';
+  const status = document.createElement('span');
+
+  const up = document.createElement('button');
+  up.className = 'small' + (existingRating === 'UP' ? ' selected' : '');
+  up.textContent = 'Helpful';
+  const down = document.createElement('button');
+  down.className = 'small' + (existingRating === 'DOWN' ? ' selected' : '');
+  down.textContent = 'Not helpful';
+  const report = document.createElement('button');
+  report.className = 'small danger';
+  report.textContent = 'Report incorrect answer';
+
+  async function send(rating, comment, incorrect) {
+    const res = await api('/api/messages/' + messageId + '/feedback', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ rating, comment, reportedIncorrect: incorrect })
+    });
+    status.textContent = res.ok ? 'Thank you for your feedback.' : 'Feedback could not be saved.';
+    up.classList.toggle('selected', res.ok && rating === 'UP');
+    down.classList.toggle('selected', res.ok && rating === 'DOWN');
+  }
+  up.onclick = () => send('UP', null, false);
+  down.onclick = () => send('DOWN', null, false);
+  report.onclick = () => {
+    const comment = prompt('What is wrong with this answer? (optional)');
+    if (comment !== null) send('DOWN', comment.trim() || null, true);
+  };
+
+  bar.append(up, down, report, status);
+  bubble.append(bar);
+}
+
+// Reads the Server-Sent Events stream: lines like "event: token" and "data: {...}", events separated by a blank line
+async function streamAnswer(question, bubble) {
+  const res = await api('/api/chat/stream', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ question, conversationId: currentConversationId })
+  });
+  if (!res.ok) {
+    const problem = await res.json().catch(() => ({}));
+    throw new Error(problem.detail || 'The server returned an error.');
+  }
+
+  // The bubble has a small line for "how I understood your question" and a part for the answer text
+  bubble.textContent = '';
+  const note = document.createElement('div');
+  note.className = 'rewritten';
+  note.hidden = true;
+  const textPart = document.createElement('span');
+  textPart.textContent = 'Searching the documents...';
+  bubble.append(note, textPart);
+
+  const reader = res.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+  let text = '';
+  while (true) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    const events = buffer.split('\n\n');
+    buffer = events.pop();   // the last piece may be incomplete
+    for (const raw of events) {
+      let type = 'message', data = '';
+      for (const line of raw.split('\n')) {
+        if (line.startsWith('event:')) type = line.slice(6).trim();
+        if (line.startsWith('data:')) data += line.slice(5).trim();
+      }
+      if (!data) continue;
+      const payload = JSON.parse(data);
+      if (type === 'question') {
+        note.hidden = false;
+        note.textContent = 'Understood as: ' + payload.text;
+      } else if (type === 'token') {
+        text += payload.text;
+        textPart.textContent = text;
+        $('messages').scrollTop = $('messages').scrollHeight;
+      } else if (type === 'done') {
+        currentConversationId = payload.conversationId;
+        bubble.textContent = '';
+        if (payload.standaloneQuestion && note.textContent) bubble.append(note);
+        const answerPart = document.createElement('div');
+        bubble.append(answerPart);
+        renderAnswer(answerPart, payload);   // answer text, sources and feedback buttons
+        loadConversations();
+      } else if (type === 'error') {
+        bubble.textContent = payload.message;
+        bubble.classList.add('error');
+      }
+    }
+  }
+}
+
+$('chatForm').onsubmit = async (event) => {
+  event.preventDefault();
+  const question = $('question').value.trim();
+  if (!question) return;
+  $('question').value = '';
+  $('sendBtn').disabled = true;
+
+  addMessage(question, 'user');
+  const bubble = addMessage('Searching the documents...', 'bot');
+  try {
+    await streamAnswer(question, bubble);
+  } catch (e) {
+    bubble.textContent = e.message || 'Something went wrong.';
+    bubble.classList.add('error');
+  }
+  $('sendBtn').disabled = false;
+  $('question').focus();
+};
+
+// ---------------- Start ----------------
+showWelcome();
+loadConversations();
+loadDocuments();
+setInterval(loadDocuments, 3000);   // keeps the processing status fresh
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+# IT Security and Data Privacy Policy
+
+Northwind Ltd - Policy owner: IT Security and Legal - Effective 1 January 2026 - Version 2026-01
+
+## 1. Purpose and scope
+
+This policy protects the information of Northwind Ltd, its customers and its employees. It applies to every person who uses Northwind systems or data, on company devices and on private devices, in the office and remotely. Security incidents are reported at once to security@northwind.example or by phone to the security desk at +1 (555) 010-9911, which is staffed 24 hours a day.
+
+## 2. Accounts and passwords
+
+### 2.1 Passwords
+
+- Passwords have at least 14 characters. A passphrase of several words is recommended.
+- Employees do not reuse passwords from private accounts and never share their password with anybody, including colleagues, managers and the IT service desk.
+- Passwords are stored in the company password manager and not in files, notes or browsers.
+- Passwords are changed immediately when there is a suspicion that they are known to somebody else. Otherwise, there is no forced change, because long passwords with multi-factor authentication are safer.
+
+### 2.2 Multi-factor authentication
+
+Multi-factor authentication (MFA) is mandatory for email, VPN, PeopleHub, the code repository and all systems that contain confidential data. Employees use the authenticator app or a hardware key. SMS codes are allowed only as a temporary solution. A lost second factor is reported to the IT service desk, which can reset it after checking the identity of the employee.
+
+## 3. Devices
+
+### 3.1 Company devices
+
+Company laptops and phones are encrypted and managed by IT. Employees install updates within 5 working days after they are offered and restart the device when asked. The screen locks automatically after 5 minutes of inactivity, and employees lock it manually when they leave the workplace. Employees do not remove security software, and they do not install software that is not on the approved list.
+
+### 3.2 Bring Your Own Device
+
+Private phones may be used for email and calendar only after they are enrolled in the mobile device management system. Private computers are not allowed to access confidential data. If an enrolled phone is lost, the company can delete the company data on it.
+
+### 3.3 Removable media
+
+USB sticks and external drives are blocked by default. Exceptions need the approval of IT Security. Files are shared through the approved cloud storage.
+
+## 4. Information classification
+
+Information is divided into four levels. Employees mark documents with the right level and handle them as shown:
+
+| Level | Examples | Handling |
+| Public | press releases, marketing material | can be shared with anyone |
+| Internal | policies, org charts, project plans | share only inside the company |
+| Confidential | customer data, contracts, financial results, source code | share only with people who need it, only on approved systems |
+| Restricted | employee health data, passwords, encryption keys, unreleased results | named recipients only, encrypted, never sent by chat |
+
+## 5. Safe daily behaviour
+
+- Clean desk: confidential papers and devices are locked away at the end of the day and when the employee leaves for more than 30 minutes.
+- Phishing: employees do not click links or open attachments in unexpected messages. Suspicious messages are reported with the Report Phishing button, and the IT Security team answers within 1 working day.
+- Visitors are always accompanied, and badges are worn visibly in the buildings.
+- Documents are printed only when really needed and are collected at once from the printer.
+- Confidential conversations are not held in public places, such as trains, cafes or lifts.
+
+## 6. Use of artificial intelligence tools
+
+Employees may use the AI assistant approved by the company, which runs in the company environment. They do not enter confidential or restricted information, personal data or source code into public AI tools such as free chat services. Results of AI tools are checked by a person before they are used with customers or in decisions about people. Employees mark documents that were written mainly by an AI tool when the reader would expect a human author. New AI tools are assessed by IT Security and Legal before use, and the application takes at most 15 working days.
+
+## 7. Security incidents
+
+A security incident is any event that may harm the confidentiality, integrity or availability of information. Examples are a lost laptop, a phishing click, an email sent to the wrong person, unauthorised access and malware.
+
+1. The employee reports the incident immediately, and in any case within 1 hour after discovery, to security@northwind.example or +1 (555) 010-9911.
+2. The employee does not delete anything and does not try to fix the problem alone.
+3. The security team assesses the incident, limits the damage and keeps a log.
+4. If personal data is affected, the Data Protection Officer decides within 48 hours whether the authority and the persons concerned must be informed. The legal deadline for notifying the authority is 72 hours after the company became aware of the breach.
+
+## 8. Data privacy
+
+### 8.1 Principles
+
+Northwind Ltd processes personal data lawfully, fairly and for a clear purpose. It collects only the data it needs, keeps it correct, deletes it when it is no longer needed, and protects it with technical and organisational measures. Employees who work with personal data complete the data protection training within 30 days after joining and every year afterwards.
+
+### 8.2 Rights of individuals
+
+Employees, applicants and customers have the right to know which data the company holds about them, to have wrong data corrected, to have data deleted when there is no reason to keep it, and to object to certain processing. Requests are sent to the Data Protection Officer at privacy@northwind.example. The company answers within 30 days. Employees who receive such a request forward it within 2 working days and do not answer it themselves.
+
+### 8.3 Retention periods
+
+| Data | Kept for |
+| Personnel file of a former employee | 7 years after the end of employment |
+| Applications of candidates who were not hired | 6 months after the decision |
+| Payroll and tax records | 10 years |
+| Sickness records (without diagnosis) | 3 years after the end of the year |
+| Camera recordings at entrances | 30 days |
+| Chat conversations with the HR assistant | 30 days, unless the user deletes them earlier |
+| Security logs | 12 months |
+
+### 8.4 Sharing data
+
+Personal data is shared only when there is a legal basis and a need. Before a new supplier receives personal data, Legal signs a data processing agreement and IT Security checks the supplier. Data is transferred outside the country of origin only to places that have an adequate level of protection or with approved contract terms.
+
+## 9. Monitoring
+
+The company monitors its systems to keep them secure, not to watch individual employees. Security logs are checked by the IT Security team. Content of private communication is never read. Targeted monitoring of one employee needs the approval of the Data Protection Officer and People and Culture and happens only in the case of a serious suspicion.
+
+## 10. Consequences
+
+A breach of this policy can lead to disciplinary action as described in the Code of Conduct and Workplace Rules, and in serious cases to dismissal and legal action. Employees who report their own mistakes quickly are treated with understanding, because a fast report limits the damage.

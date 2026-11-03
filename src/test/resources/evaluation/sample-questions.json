@@ -1,0 +1,29 @@
+{
+  "description":"Questions about the sample documents in sample-docs/. 'documents': files that contain the answer (the handbook contains every policy, so it is always accepted). 'text': a regular expression that must appear in one of the passages the search finds. 'facts': regular expressions that must appear in the written answer. No 'documents' = the documents do not contain the answer.",
+  "questions": [
+    {"id": "S01", "question": "How many days of sick leave on full pay do I get per year?", "documents": ["01-leave-policy.pdf"], "text": "12 (working )?days", "facts": ["\\b12\\b"]},
+    {"id": "S02", "question": "How long is paternity leave?", "documents": ["01-leave-policy.pdf"], "text": "4 weeks of paternity leave", "facts": ["4 weeks|four weeks"]},
+    {"id": "S03", "question": "When do carried-over leave days expire?", "documents": ["01-leave-policy.pdf"], "text": "31 March", "facts": ["31 March"]},
+    {"id": "S04", "question": "From which value must I declare a gift?", "documents": ["02-code-of-conduct-and-workplace-rules.docx"], "text": "75 USD", "facts": ["\\b75\\b"]},
+    {"id": "S05", "question": "From what time do I not have to answer messages any more?", "documents": ["03-work-life-balance-guidelines.docx"], "text": "19:00", "facts": ["19:00|7 ?pm"]},
+    {"id": "S06", "question": "How much is the childcare allowance per month?", "documents": ["03-work-life-balance-guidelines.docx", "04-employee-benefits-guide.pdf"], "text": "150 USD", "facts": ["\\b150\\b"]},
+    {"id": "S07", "question": "Up to which percentage of salary does the company match pension contributions?", "documents": ["04-employee-benefits-guide.pdf"], "text": "6 percent", "facts": ["\\b6\\b"]},
+    {"id": "S08", "question": "How high is the employee referral bonus?", "documents": ["04-employee-benefits-guide.pdf", "08-recruitment-performance-and-exit-policy.docx"], "text": "1,000 USD", "facts": ["1,?000"]},
+    {"id": "S09", "question": "How many days per week may I work remotely?", "documents": ["05-remote-and-hybrid-work-policy.pdf", "03-work-life-balance-guidelines.docx"], "text": "3 (remote )?days", "facts": ["\\b3\\b|three"]},
+    {"id": "S10", "question": "For how many days a year may I work from another country?", "documents": ["05-remote-and-hybrid-work-policy.pdf"], "text": "20 working days", "facts": ["\\b20\\b"]},
+    {"id": "S11", "question": "How long must a password be?", "documents": ["06-it-security-and-data-privacy-policy.docx"], "text": "14 characters", "facts": ["\\b14\\b"]},
+    {"id": "S12", "question": "Within how much time must I report a security incident?", "documents": ["06-it-security-and-data-privacy-policy.docx"], "text": "within 1 hour", "facts": ["1 hour|one hour|60 minutes"]},
+    {"id": "S13", "question": "How much is the daily meal allowance on a business trip?", "documents": ["07-health-safety-and-business-travel-policy.pdf"], "text": "55 USD", "facts": ["\\b55\\b"]},
+    {"id": "S14", "question": "What is the maximum hotel price per night in a tier 2 city?", "documents": ["07-health-safety-and-business-travel-policy.pdf"], "text": "200 USD", "facts": ["\\b200\\b"]},
+    {"id": "S15", "question": "What is the notice period for an employee of grade G10 after probation?", "documents": ["08-recruitment-performance-and-exit-policy.docx"], "text": "6 months", "facts": ["6 months|six months"]},
+    {"id": "S16", "question": "In which months do the performance reviews take place?", "documents": ["08-recruitment-performance-and-exit-policy.docx"], "text": "June", "facts": ["June", "December"]},
+    {"id": "S17", "question": "What is form HR-160 used for?", "documents": ["07-health-safety-and-business-travel-policy.pdf"], "text": "HR-160", "facts": ["card"]},
+    {"id": "S18", "question": "What is the phone number of the reception desk of the Aldermoor office?", "documents": [], "text": "\\(555\\) 020-1000", "facts": ["020-1000"]},
+    {"id": "S19", "question": "What are the opening hours of the Brightwater office?", "documents": [], "text": "8:00 to 19:00", "facts": ["8:00", "19:00"]},
+    {"id": "S20", "question": "What is the fee of the course NA-110?", "documents": [], "text": "NA-110", "facts": ["\\b600\\b"]},
+    {"id": "S21", "question": "How high is the learning budget of grade G9?", "documents": ["04-employee-benefits-guide.pdf"], "text": "4,000 USD", "facts": ["4,?000"]},
+    {"id": "U01", "question": "Does Northwind offer a company car to its employees?", "documents": null, "text": null, "facts": []},
+    {"id": "U02", "question": "How much is the salary of the chief executive?", "documents": null, "text": null, "facts": []},
+    {"id": "U03", "question": "Can I be paid my salary in cryptocurrency?", "documents": null, "text": null, "facts": []}
+  ]
+}

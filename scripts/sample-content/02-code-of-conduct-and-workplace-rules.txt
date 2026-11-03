@@ -1,0 +1,105 @@
+# Code of Conduct and Workplace Rules
+
+Northwind Ltd - Policy owner: People and Culture and Legal - Effective 1 January 2026 - Version 2026-01
+
+## 1. Our values
+
+Northwind Ltd works with four values: respect, honesty, ownership and curiosity. This code explains what they mean in daily work. It applies to all employees, contractors and interns, at the office, at customer sites, while travelling and online. Managers have a special duty to set an example.
+
+## 2. Working hours and attendance
+
+### 2.1 Standard hours
+
+The standard working week is 40 hours, from Monday to Friday. The standard working day runs from 9:00 to 17:30 including a lunch break of 30 minutes. Teams can agree on flexible hours as described in the Work-Life Balance Guidelines. Everybody should be available during the core collaboration hours from 10:00 to 16:00 local time.
+
+### 2.2 Punctuality and absence
+
+Employees who expect to arrive more than 30 minutes late tell the team before the start of the working day. Unplanned absence is reported before 9:30 as described in the Leave Policy. Repeated lateness without a good reason is discussed first in a conversation with the manager and can later become a disciplinary matter.
+
+### 2.3 Overtime
+
+Overtime must be approved in advance by the line manager. Approved overtime is paid at 1.5 times the normal hourly rate on weekdays and at 2 times the normal hourly rate on weekends and public holidays. Employees of grade G10 and above are not paid for overtime, because it is part of their role. Overtime is limited to 8 hours per week.
+
+## 3. Respect and equal opportunity
+
+### 3.1 Equal opportunity
+
+Northwind Ltd treats everybody fairly. Decisions about hiring, pay, promotion, training and dismissal are based on skills, performance and conduct only. Discrimination because of age, gender, gender identity, ethnic origin, nationality, religion, disability, sexual orientation, family status or any other protected characteristic is not tolerated.
+
+### 3.2 Harassment and bullying
+
+Harassment, bullying, humiliation and intimidation are not tolerated, in person or online. Examples are offensive jokes, unwanted physical contact, spreading rumours, shouting, and excluding a colleague on purpose. Sexual harassment leads to disciplinary action up to dismissal.
+
+### 3.3 How to report a problem
+
+- Employees can talk to their manager, to any other manager, or to the HR helpdesk at hr-help@northwind.example or +1 (555) 010-4400.
+- Reports can also be made anonymously through the Speak Up line at speakup@northwind.example or +1 (555) 010-6600, which is open 24 hours a day.
+- People and Culture confirms every report within 2 working days and completes the investigation within 10 working days. In complex cases the employee is told why more time is needed.
+- Nobody may be punished for reporting a concern in good faith. Retaliation is a serious violation of this code.
+
+## 4. Dress code
+
+The dress code at Northwind offices is business casual: clean and neat clothes that are suitable for a professional workplace. Casual Fridays are allowed for everybody who does not have a customer meeting that day. Employees who meet customers wear smart business clothes unless the customer says otherwise. Safety clothing and shoes are mandatory in laboratories, warehouses and on construction sites. Religious clothing is always allowed. Departments with special requirements, such as the Facilities and Lab teams, publish them in their department rules.
+
+## 5. Gifts, hospitality and conflicts of interest
+
+### 5.1 Gifts and hospitality
+
+- Gifts and hospitality from suppliers or customers with a value of more than 75 USD must be declared to the manager within 5 working days, using the gift register in PeopleHub.
+- Employees never accept cash, gift cards or any gift during a tender process.
+- Employees do not give gifts to public officials. Customer gifts need the approval of the manager and have a maximum value of 100 USD.
+
+### 5.2 Conflicts of interest
+
+A conflict of interest exists when a private interest can influence a business decision. Employees declare conflicts in writing to the manager before they take part in the decision. Examples are a family member who works for a supplier, shares in a competitor, or a private business with a Northwind customer.
+
+### 5.3 Outside work
+
+Work for another employer, a board position or a private business next to the Northwind job needs the written approval of the manager and People and Culture, using form HR-142. Approval is refused when the work competes with Northwind, uses company time or property, or can damage the reputation of the company.
+
+## 6. Anti-bribery and honesty
+
+Northwind Ltd does not offer, give, ask for or accept bribes, in any form, anywhere in the world. Facilitation payments are forbidden. Employees keep correct and complete records of all business transactions and never change a record to hide the truth. Concerns about fraud or bribery are reported to the Speak Up line at once.
+
+## 7. Confidentiality and company property
+
+### 7.1 Confidential information
+
+Employees keep customer data, employee data, financial results, source code, product plans and prices confidential, also after they leave the company. Confidential documents are shared only with people who need them. Details are in the IT Security and Data Privacy Policy.
+
+### 7.2 Company equipment
+
+Company laptops, phones and accounts are used mainly for work. Reasonable private use is allowed when it does not disturb work, does not cost the company money and does not break the law. Company laptops must not be used for private business. Employees report lost or stolen equipment to the IT service desk within 1 hour.
+
+### 7.3 Social media
+
+Employees may share their own views online, but they make clear that these are private views and do not speak for the company without permission. They never share confidential information, photos of customers or colleagues without consent, or insulting content about colleagues, customers or competitors.
+
+## 8. Alcohol, drugs and smoking
+
+Employees do not work under the influence of alcohol or illegal drugs. Alcohol is allowed only at company events that have been approved by a director, and then in moderation. Smoking and vaping are allowed only in the marked outdoor smoking areas, never inside buildings and never at building entrances.
+
+## 9. Visitors, parking and pets
+
+- Visitors register at reception, wear a visitor badge, and are accompanied at all times.
+- Employees may park free of charge in car park B during working hours. Visitors may use car park A. Disabled parking spaces are next to the main entrance and need a permit from the Facilities team.
+- Bicycle racks and showers are available next to the main entrance.
+- Pets are not allowed in the office. Guide dogs and assistance dogs are always welcome.
+- Photography and video recording inside the buildings need the permission of the Facilities team.
+
+## 10. Disciplinary procedure
+
+When the rules of this code are broken, Northwind Ltd follows a fair procedure. The employee has the right to be heard and may bring a colleague or a staff representative to every formal meeting.
+
+| Step | What happens |
+| Step 1 - Informal talk | The manager discusses the problem and agrees on improvements. A note is kept for 6 months. |
+| Step 2 - Verbal warning | A recorded warning for minor misconduct. It stays valid for 6 months. |
+| Step 3 - Written warning | A formal letter for repeated or more serious misconduct. It stays valid for 12 months. |
+| Step 4 - Final written warning | The last step before dismissal. It stays valid for 12 months. |
+| Step 5 - Dismissal | Employment ends, with notice or immediately in case of gross misconduct. |
+
+Gross misconduct, such as theft, violence, serious harassment, fraud or serious breaches of data security, can lead to immediate dismissal after an investigation. An employee can appeal against any disciplinary decision within 5 working days. The appeal is heard by a manager who was not involved in the first decision.
+
+## 11. Grievance procedure
+
+An employee who is unhappy about their work, treatment or conditions first tries to solve the problem informally with the manager. If that does not work, the employee sends a written grievance to People and Culture. A meeting takes place within 10 working days. The employee receives a written answer within 5 working days after the meeting and may appeal to a director.

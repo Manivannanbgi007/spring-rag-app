@@ -1,0 +1,91 @@
+# Recruitment, Performance and Exit Policy
+
+Northwind Ltd - Policy owner: People and Culture - Effective 1 January 2026 - Version 2026-01
+
+## 1. Recruitment and onboarding
+
+### 1.1 Fair recruitment
+
+Jobs are advertised internally for at least 5 working days before they are advertised outside the company. Selection is based on skills, experience and potential. Every shortlist considers at least 3 candidates when possible. Interviews are structured: all candidates for the same job receive the same core questions. Every hire needs the approval of People and Culture and the budget holder.
+
+### 1.2 Offers and contracts
+
+The offer letter names the grade, the salary, the start date, the notice period and the probation period. The offer is valid for 10 working days. Offers are made only after references and checks required by law have been completed. New employees receive their contract at least 10 working days before the start date.
+
+### 1.3 Onboarding
+
+In the first week, new employees receive their equipment, access to systems, a buddy and a welcome meeting with their manager. In the first 90 days, they follow an onboarding plan with goals for 30, 60 and 90 days. All employees complete the mandatory courses on security, data protection and the Code of Conduct within 30 days after joining.
+
+### 1.4 Employee referral
+
+Employees may recommend candidates. For every successful referral, the employee receives a referral bonus of 1,000 USD after the new colleague has completed 6 months of employment. Managers and recruiters cannot receive a bonus for roles in their own team.
+
+## 2. Probation
+
+The probation period is 6 months for all new employees. During probation, the manager and the employee meet at the end of month 1, month 3 and month 5. The manager decides before the end of month 5 whether the employee passes. The probation period can be extended once by up to 3 months when more time is needed to judge, with the written agreement of People and Culture. During probation, the notice period is 1 month for both sides.
+
+## 3. Performance management
+
+### 3.1 Goals and conversations
+
+Every employee has 3 to 5 goals per half year, agreed with the manager in PeopleHub. Manager and employee hold a short conversation every month. Formal performance reviews take place twice a year: the mid-year review in June and the year-end review in December.
+
+### 3.2 Ratings
+
+The year-end review ends with a rating from 1 to 5:
+
+| Rating | Meaning |
+| 5 | Outstanding: far above the goals and a role model |
+| 4 | Exceeds expectations |
+| 3 | Meets expectations: a solid performance |
+| 2 | Needs improvement: some goals not reached |
+| 1 | Unsatisfactory: most goals not reached |
+
+Ratings are discussed in a calibration meeting of the managers of a department, so that they are fair and comparable. Employees see their rating and the reasons in PeopleHub and may add a comment. An employee who disagrees can ask for a second review by the head of department within 10 working days.
+
+### 3.3 Salary and promotion
+
+Salary increases are decided once per year, with effect from 1 January. The promotion cycle takes place in April. Promotions need a recommendation of the manager, evidence of work at the higher grade for at least 6 months, and the approval of the head of department and People and Culture. A promotion usually comes with a salary increase of at least 5 percent.
+
+### 3.4 Performance improvement plan
+
+An employee with a rating of 2 or 1, or with serious performance problems during the year, receives a performance improvement plan (PIP) of 90 days. The plan has clear goals, regular weekly meetings, and the support that is needed, such as training or coaching. At the end of the plan, there are three possible outcomes: the performance is good and the plan ends, the plan is extended once by 30 days, or the disciplinary procedure of the Code of Conduct starts. A PIP is not a disciplinary step by itself.
+
+## 4. Transfers and changes
+
+Employees who have been in their role for at least 12 months may apply for an internal transfer. The current manager is informed at the same time as the new manager and may not block the move without a business reason. The transfer takes place within 8 weeks after the offer, so that handover is possible. A change of grade or location is recorded in a contract amendment.
+
+## 5. Notice periods
+
+| Situation | Notice period |
+| During probation (employee or company) | 1 month |
+| After probation, grades G1 to G9 | 3 months |
+| After probation, grades G10 to G12 | 6 months |
+
+Notice must be given in writing. The notice period ends at the end of a calendar month. The company may release an employee from work during the notice period, with pay (garden leave). By agreement, the notice period can be shortened.
+
+## 6. Resignation and exit
+
+### 6.1 Steps when an employee leaves
+
+1. The employee gives written notice to the manager and to People and Culture.
+2. The manager plans the handover of tasks, contacts and documents with the employee.
+3. People and Culture invites the employee to an exit interview, which is voluntary and confidential. The results are used in anonymous form to improve the company.
+4. The employee returns all company equipment, badges and documents on the last working day, and IT removes access at the end of that day.
+5. Payroll pays the final salary, together with unused leave of the current year, within 14 days after the last working day.
+
+### 6.2 References and certificates
+
+On request, People and Culture issues a letter of employment with the job title and dates within 5 working days. A detailed reference is written within 10 working days, and the employee can read it before it is sent. Managers do not give references in the name of the company without People and Culture.
+
+### 6.3 Rehire
+
+Former employees who left in good standing may apply again. Their previous period of service is not added up, except when the break was shorter than 6 months.
+
+## 7. Dismissal and redundancy
+
+Dismissal because of conduct follows the disciplinary procedure of the Code of Conduct. Dismissal because of poor performance follows the performance improvement plan above. Dismissal because of redundancy, when a job disappears, needs consultation with employee representatives where the law requires it, a search for another job in the company for at least 30 days, and a severance payment of 1 month of salary for each full year of service, with a minimum of 3 months. The employee may bring a colleague or a representative to every meeting.
+
+## 8. Retirement
+
+Employees who retire receive a farewell and a long service gift. They may reduce their working time in the 2 years before retirement, with 80 percent of the hours at 90 percent of the pay, when the manager and People and Culture agree. Pension questions are answered by the pension provider and the HR helpdesk at hr-help@northwind.example.

@@ -1,0 +1,22 @@
+{
+  "description": "Answers labelled by a human. They are used to measure how often the model that acts as a judge agrees with a person. Page numbers refer to corpus.json. Half of the answers are correct, the other half contain a small, realistic mistake (the kind a model makes).",
+  "examples": [
+    { "page": 1, "question": "How many days of annual leave do full-time employees get?", "answer": "Full-time employees get 24 days of paid annual leave per calendar year.", "human": "SUPPORTED" },
+    { "page": 2, "question": "How long is maternity leave?", "answer": "Maternity leave is 26 weeks on full pay.", "human": "SUPPORTED" },
+    { "page": 3, "question": "How many days per week may I work from home?", "answer": "Employees may work remotely up to 2 days per week, with manager approval.", "human": "SUPPORTED" },
+    { "page": 4, "question": "How much of the health insurance does the company pay?", "answer": "The company pays 100 percent of the health insurance premium for the employee and 50 percent for dependants.", "human": "SUPPORTED" },
+    { "page": 6, "question": "How do I claim expenses?", "answer": "Expense claims must be submitted within 30 days using form HR-204.", "human": "SUPPORTED" },
+    { "page": 7, "question": "How long is the notice period?", "answer": "The notice period is 1 month during probation and 3 months afterwards.", "human": "SUPPORTED" },
+    { "page": 8, "question": "When do performance reviews take place?", "answer": "Performance reviews take place twice a year, in June and December.", "human": "SUPPORTED" },
+    { "page": 5, "question": "When must I declare a gift?", "answer": "Gifts worth more than 50 USD from suppliers must be declared to the manager.", "human": "SUPPORTED" },
+
+    { "page": 1, "question": "How many days of annual leave do full-time employees get?", "answer": "Full-time employees get 25 days of paid annual leave per calendar year.", "human": "UNSUPPORTED", "note": "wrong number" },
+    { "page": 2, "question": "How long is maternity leave?", "answer": "Maternity leave is 26 weeks, and 13 of those weeks are unpaid.", "human": "UNSUPPORTED", "note": "invented detail" },
+    { "page": 3, "question": "How many days per week may I work from home?", "answer": "Employees may work remotely up to 3 days per week.", "human": "UNSUPPORTED", "note": "wrong number" },
+    { "page": 4, "question": "How much of the health insurance does the company pay?", "answer": "The company pays 100 percent of the health insurance premium for the employee and 100 percent for dependants.", "human": "UNSUPPORTED", "note": "wrong number" },
+    { "page": 6, "question": "How do I claim expenses?", "answer": "Expense claims must be submitted within 14 days using form HR-204.", "human": "UNSUPPORTED", "note": "wrong number" },
+    { "page": 7, "question": "How long is the probation period and the notice period?", "answer": "The probation period is 3 months and the notice period is 1 month.", "human": "UNSUPPORTED", "note": "wrong numbers" },
+    { "page": 8, "question": "When do performance reviews take place?", "answer": "Performance reviews take place twice a year, in March and September.", "human": "UNSUPPORTED", "note": "wrong months" },
+    { "page": 5, "question": "When must I declare a gift?", "answer": "Gifts of any value from suppliers are forbidden.", "human": "UNSUPPORTED", "note": "contradicts the text" }
+  ]
+}

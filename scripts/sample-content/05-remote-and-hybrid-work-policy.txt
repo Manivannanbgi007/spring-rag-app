@@ -1,0 +1,68 @@
+# Remote and Hybrid Work Policy
+
+Northwind Ltd - Policy owner: People and Culture and IT - Effective 1 January 2026 - Version 2026-01
+
+## 1. Purpose
+
+This policy sets the rules for working outside the office. It supports flexible work and keeps collaboration, security and fairness in balance. It applies to all employees whose role allows remote work. Roles that need a physical presence, such as reception, facilities and laboratory work, are excluded and have their own rules.
+
+## 2. Hybrid model
+
+### 2.1 Remote days
+
+Employees may work remotely up to 3 days per week. The other days are office days. Every team keeps 2 team days in the office, which are Tuesday and Thursday unless the team agrees on other days with the head of department. On team days all team members are in the office, so that meetings, workshops and one-to-one conversations can take place in person.
+
+### 2.2 New joiners and probation
+
+During the first 3 months of employment, new employees work in the office at least 4 days per week, so that they can learn the work and meet their colleagues. After that, the normal model applies. Employees on a performance improvement plan work in the office at least 4 days per week while the plan runs, unless the manager agrees otherwise.
+
+### 2.3 Fully remote roles
+
+A few roles are fully remote. The head of department and People and Culture approve fully remote roles when a job is created. Fully remote employees come to the office or to a team event at least 4 times per year, and the company pays the travel.
+
+## 3. Working from another place
+
+### 3.1 Co-working spaces
+
+Employees may work from a co-working space close to their home when this is agreed with the manager. The company pays up to 150 USD per month for a co-working membership for employees who live more than 60 km from the nearest office or who have no suitable space at home.
+
+### 3.2 Working from abroad
+
+Employees may work from another country for up to 20 working days per calendar year, when they have asked for approval at least 4 weeks in advance with form HR-118. The country must be on the list of approved countries on the intranet. Working from abroad can create tax, social security and legal obligations, so permission is only given when People and Culture, Finance and Legal have checked the case. Employees pay for their own travel and accommodation. Working abroad without approval is a breach of this policy.
+
+## 4. Equipment and workspace
+
+- The company provides a laptop, a headset and a monitor for the home workplace on request.
+- Employees receive a home office allowance of 400 USD once and 50 USD per month for internet and phone (see the Employee Benefits Guide).
+- Employees keep their workspace safe and ergonomic. The online ergonomic self-assessment must be completed within 1 month after the start of remote work and every 2 years. The company pays for an ergonomic chair or desk when the assessment shows a need, up to 400 USD.
+- Employees may not let other people use company equipment.
+
+## 5. Availability and communication
+
+Remote employees are available during the core collaboration hours from 10:00 to 16:00 local time and respond to messages within a reasonable time, normally within 2 hours during working time. They keep their calendar up to date and show when they work remotely. Video is switched on in team meetings unless the connection or the situation does not allow it. Remote employees follow the right to disconnect described in the Work-Life Balance Guidelines.
+
+## 6. Security when working remotely
+
+- Employees use only the company laptop, VPN and approved tools for work. Private computers are not allowed for work, unless the IT team has approved the Bring Your Own Device programme.
+- Screens are locked when the employee leaves the workplace. Confidential conversations are held where nobody can listen.
+- Public wireless networks are used only with the company VPN.
+- Printing company documents at home is not allowed.
+- Lost or stolen equipment is reported to the IT service desk within 1 hour.
+
+More rules are in the IT Security and Data Privacy Policy.
+
+## 7. Expenses and tax
+
+The company does not reimburse electricity, heating, rent or other home costs, except the allowances described in this policy. Employees who work abroad are responsible for personal tax obligations unless People and Culture has agreed otherwise. Travel to the office is the private cost of the employee, also on team days.
+
+## 8. Health and safety at home
+
+Employees are responsible for a safe workplace at home. Accidents that happen while working at home are reported within 24 hours with form HR-210, in the same way as accidents in the office. Employees take regular breaks, at least 10 minutes after every 2 hours of screen work.
+
+## 9. Managing a hybrid team
+
+Managers agree the team days with the team, plan important meetings on team days, and measure results and not presence. They make sure that remote and office colleagues receive the same information and the same opportunities. Managers who see that remote work does not work for a person or a task talk with the person first and may change the arrangement with a notice of 4 weeks.
+
+## 10. Changes and exceptions
+
+The head of department may approve an exception to the number of remote days for a limited time, for example for health reasons, for a move, or for the care of a relative. Exceptions are recorded in PeopleHub under My Arrangements. People and Culture reviews this policy every year.

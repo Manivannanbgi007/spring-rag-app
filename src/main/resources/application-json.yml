@@ -1,0 +1,12 @@
+# Structured logging: every log line is ONE JSON object, so a log system (Elasticsearch, Loki, Splunk ...)
+# can search and count by field. Switch it on with:   mvnw spring-boot:run -Dspring-boot.run.profiles=json
+# (or the environment variable SPRING_PROFILES_ACTIVE=json).
+#
+# The fields: time, level, message, logger, thread, service name, trace id, span id, and everything that is
+# in the MDC (requestId, documentId) and the key-values of a log call (for the summary line of a question:
+# tenant, user (a hash), conversationId, outcome, degraded, sources, durationMs, promptTokens, ...).
+# "ecs" is the Elastic Common Schema. Other choices: logstash, gelf.
+logging:
+  structured:
+    format:
+      console: ecs

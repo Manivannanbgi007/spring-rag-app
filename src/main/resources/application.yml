@@ -1,0 +1,213 @@
+# Settings are read from the ".env" file in the project root (same file Docker Compose uses),
+# so ports, passwords and model names are defined in ONE place.
+# Values after ":" are defaults used when the variable is missing.
+
+spring:
+  application:
+    name: spring-rag-app
+
+  config:
+    import: optional:file:.env[.properties]
+
+  # Safety net for every outgoing HTTP call. The real, per-call limits are app.resilience.* below.
+  http:
+    client:
+      connect-timeout: 3s
+      read-timeout: 130s
+
+  # ---------- Database ----------
+  datasource:
+    url: jdbc:postgresql://localhost:${POSTGRES_PORT:5440}/${POSTGRES_DB:ragdb}
+    username: ${POSTGRES_USER:raguser}
+    password: ${POSTGRES_PASSWORD}          # no default on purpose: secrets never live in source code
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 5000              # fail fast (ms) if the database is down
+
+  jpa:
+    open-in-view: false                     # avoids hidden database access in the web layer
+    hibernate:
+      ddl-auto: validate                    # Hibernate only CHECKS tables; Flyway creates them
+
+  flyway:
+    enabled: true                           # runs db/migration/V*.sql on startup
+
+  # Lets the trace of a request continue in other threads (streamed answers, background work)
+  reactor:
+    context-propagation: auto
+
+  # ---------- Spring AI ----------
+  ai:
+    retry:
+      max-attempts: 0                       # = no retries after the first try. Spring AI would otherwise retry up to 10 times
+                                            # with 2s, 10s, 50s ... pauses and hide failures from ProtectedCall
+    ollama:
+      base-url: http://localhost:${OLLAMA_PORT:11440}
+      chat:
+        options:
+          model: ${CHAT_MODEL:llama3.2:3b}
+          temperature: 0.1                  # low = factual and consistent (good for policies)
+          num-ctx: 8192                     # how much text (prompt + answer) the model can handle at once
+          num-predict: 700                  # maximum length of one answer, in tokens
+      embedding:
+        options:
+          model: ${EMBEDDING_MODEL:nomic-embed-text}
+    # Spring AI measures its own calls (tokens, time). Prompts, answers and search text must NOT be put into
+    # traces or logs: they contain personal data. These switches are off by default; they are written here so
+    # that nobody switches them on by accident.
+    chat:
+      observations:
+        log-prompt: false
+        log-completion: false
+      client:
+        observations:
+          log-prompt: false
+          log-completion: false
+    vectorstore:
+      observations:
+        log-query-response: false
+      pgvector:
+        initialize-schema: false            # Flyway creates the vector_store table, not Spring AI
+        table-name: vector_store
+        dimensions: 768                     # must match the embedding model (nomic-embed-text = 768)
+        distance-type: COSINE_DISTANCE
+        index-type: HNSW
+
+  # ---------- File upload limits ----------
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+# ---------- Our own settings ----------
+app:
+  documents:
+    upload-dir: ./uploads                   # original files are saved here
+    max-pages: 500                          # longer documents are rejected
+    max-title-length: 255
+  rag:
+    top-k: 5                                # chunks given to the model for each question
+    hybrid-enabled: true                    # true = meaning search + keyword search; false = meaning search only
+    rerank-enabled: true                    # true = reorder the best candidates with a second, closer look
+    candidates: 20                          # results fetched by each of the two searches
+    rerank-candidates: 10                   # best combined results that are reranked
+    rrf-k: 60                               # rank fusion constant (60 is the usual value)
+    similarity-threshold: 0.42              # weaker matches are ignored (0 to 1). Measured with nomic-embed-text:
+                                            # off-topic questions score about 0.37-0.40, real ones 0.47-0.76
+    max-context-chars: 8000                 # limit for the text sent to the model
+    snippet-length: 300                     # preview length shown with each source
+  # Prices per 1000 tokens in US dollars. 0 = free (the models run on your own computer).
+  # Example for OpenAI gpt-4o-mini + text-embedding-3-small: llm-input 0.00015, llm-output 0.0006, embedding 0.00002
+  cost:
+    llm-input-per-1k: 0
+    llm-output-per-1k: 0
+    embedding-per-1k: 0
+  # How often one user / one tenant may use the application (0 = no limit).
+  rate-limit:
+    user-per-minute: 20                     # questions per user per minute
+    tenant-per-minute: 120                  # questions per tenant per minute (all its users together)
+    uploads-per-hour-per-tenant: 30
+  # Which web pages from other websites may call the API from a browser. Empty = none (same site only).
+  cors:
+    allowed-origins: []
+  # Protection of every call to a model. See ProtectedCall for what each setting does.
+  cache:
+    embedding-max-size: 1000                # question vectors kept in memory
+    embedding-ttl: 1h
+  resilience:
+    search-timeout: 5s                      # a database search that runs longer is cancelled
+    llm:                                    # the language model that writes the answers
+      timeout: 90s                          # one try; for a streamed answer: wait for the FIRST word
+      stream-idle-timeout: 30s              # streamed answer: longest pause between two words
+      max-concurrent-calls: 4               # a CPU model gets slower for everybody when more run at once
+      max-wait-for-slot: 10s                # a 5th question waits this long, then gets "busy"
+      retry-attempts: 2                     # 2 tries in total (1 retry)
+      retry-backoff: 1s                     # wait before the retry
+      circuit-breaker-enabled: true
+      failure-rate-percent: 50              # open when half of the recent calls failed ...
+      minimum-calls: 4                      # ... judged after at least this many calls
+      window-size: 10                       # ... out of the last 10 calls
+      open-duration: 30s                    # then fail immediately for 30 seconds
+      calls-per-minute: 120                 # all users together (protects a paid provider); 0 = no limit
+    embedding:                              # turning the question into a vector (fast)
+      timeout: 10s
+      stream-idle-timeout: 10s              # not used (embedding is not streamed)
+      max-concurrent-calls: 8
+      max-wait-for-slot: 5s
+      retry-attempts: 3
+      retry-backoff: 300ms
+      circuit-breaker-enabled: true
+      failure-rate-percent: 50
+      minimum-calls: 4
+      window-size: 10
+      open-duration: 20s
+      calls-per-minute: 0
+    ingestion:                              # embedding batches while a document is processed (background)
+      timeout: 120s                         # 32 chunks on a CPU take several seconds
+      stream-idle-timeout: 120s             # not used
+      max-concurrent-calls: 2               # same as the number of processing threads
+      max-wait-for-slot: 60s
+      retry-attempts: 3                     # safe: chunk ids are fixed, so saving twice changes nothing
+      retry-backoff: 2s
+      circuit-breaker-enabled: false        # a failing document simply ends as FAILED
+      failure-rate-percent: 50
+      minimum-calls: 4
+      window-size: 10
+      open-duration: 30s
+      calls-per-minute: 0
+  privacy:
+    mask-pii: true                         # replace emails, phones, card numbers, IDs and secrets before any model call
+  conversations:
+    session-timeout: 8h                    # a conversation idle for longer cannot be continued
+    retention-days: 30                      # conversations idle for longer are deleted for good
+    retention-cron: "0 30 3 * * *"          # when the clean-up runs: every night at 03:30
+    history-messages: 6                     # recent messages used to understand a follow-up question
+  ingestion:
+    chunk-size: 500                       # target tokens per chunk
+    embedding-batch-size: 32                # chunks sent to the embedding model per call
+    threads: 2                              # documents processed at the same time
+    queue-size: 20                          # waiting documents; more than this -> "busy" error
+
+# ---------- Actuator (health + metrics) and tracing ----------
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus   # /actuator/prometheus is read by Prometheus
+  endpoint:
+    health:
+      show-details: always                  # fine for local development
+  metrics:
+    tags:
+      application: ${spring.application.name}      # added to every metric
+    distribution:
+      percentiles-histogram:
+        rag: true                           # our timers get histogram buckets, so Prometheus can calculate p95
+  tracing:
+    sampling:
+      probability: ${TRACING_SAMPLING:1.0}  # 1.0 = every request is traced (fine here). In production use 0.1 or less
+    export:
+      otlp:
+        enabled: ${TRACING_EXPORT:false}    # true = send traces to Jaeger (see the "monitoring" profile in docker-compose)
+  opentelemetry:
+    tracing:
+      export:
+        otlp:
+          endpoint: http://localhost:${JAEGER_OTLP_PORT:14318}/v1/traces
+  otlp:
+    metrics:
+      export:
+        enabled: false                      # metrics go to Prometheus (pull), not to an OTLP collector
+  logging:
+    export:
+      otlp:
+        enabled: false                      # logs stay in the console
+
+server:
+  port: 8110
+
+logging:
+  pattern:
+    level: "%5p [req=%X{requestId:-}] [doc=%X{documentId:-}]"   # ids appear on every log line
+  level:
+    com.example.ragapp: INFO

@@ -1,0 +1,17 @@
+# Secrets and local settings
+.env
+
+# Maven build output
+target/
+
+# Uploaded files stored by the app
+uploads/
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db

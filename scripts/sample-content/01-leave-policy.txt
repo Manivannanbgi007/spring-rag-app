@@ -1,0 +1,131 @@
+# Leave Policy
+
+Northwind Ltd - Policy owner: People and Culture - Effective 1 January 2026 - Version 2026-01
+
+## 1. Purpose and scope
+
+This policy explains every type of leave that Northwind Ltd employees can take, how much leave they receive, and how to request it. It applies to all full-time and part-time employees in every Northwind office. Contractors and interns are covered only where this policy says so.
+
+Leave is requested and approved in PeopleHub, the HR portal. Questions about this policy go to the HR helpdesk at hr-help@northwind.example or +1 (555) 010-4400 (open 9:00 to 17:00 local time).
+
+## 2. Annual leave
+
+### 2.1 Entitlement
+
+The leave year runs from 1 January to 31 December. Full-time employees receive paid annual leave in working days, according to their grade:
+
+| Grade | Annual leave per year |
+| Grades G1 to G5 | 25 working days |
+| Grades G6 to G9 | 27 working days |
+| Grades G10 to G12 | 30 working days |
+
+Public holidays are not part of annual leave. Each office publishes its own list of public holidays (see the office calendars in Annex A of the Complete Employee Handbook).
+
+### 2.2 Part-time employees and new joiners
+
+Part-time employees receive a pro rata entitlement based on their contracted hours. An employee who joins during the year receives 1/12 of the yearly entitlement for each full month of employment in that year. Employees can use leave they have earned during the probation period, but may only take a block of more than 5 working days after the first 3 months of employment.
+
+### 2.3 How to request annual leave
+
+- Requests of 1 or 2 working days need at least 2 working days notice.
+- Requests of 3 to 5 working days need at least 5 working days notice.
+- Requests of more than 5 consecutive working days need at least 10 working days notice.
+- The manager approves or rejects the request in PeopleHub within 3 working days. A request that is not answered within 3 working days is escalated to the manager of the manager.
+- Employees should not book flights or other non-refundable travel before the leave is approved.
+
+### 2.4 Minimum leave and blackout periods
+
+Every employee must take at least 10 consecutive working days of annual leave once per year. This rule protects health and is explained in the Work-Life Balance Guidelines. Departments may declare blackout periods of at most 10 working days per year, for example the first 3 working days of each month in Finance (month-end close). Blackout periods are published in PeopleHub at least 60 days in advance.
+
+### 2.5 Carry-over and payment
+
+Up to 5 unused annual leave days can be carried over to the next leave year. Carried-over days expire on 31 March. Annual leave cannot be paid out instead of being taken, except when employment ends: unused leave of the current year is then paid in the final salary. An employee who has taken more leave than earned repays the difference through the final salary.
+
+## 3. Sick leave
+
+### 3.1 Entitlement and pay
+
+Employees receive 12 days of sick leave per year on full pay. After these 12 days, an employee who remains ill receives 50 percent of salary for up to 40 further working days. After that, the case is handled with the People and Culture team and the company insurer.
+
+### 3.2 Reporting sickness
+
+- The employee informs the manager before 9:30 on the first day of absence, by phone or message. An email alone is not enough on the first day.
+- Sickness of 1 to 3 consecutive days is confirmed with a self-declaration in PeopleHub after returning to work.
+- Sickness of more than 3 consecutive days needs a medical certificate, which is uploaded to PeopleHub within 2 working days of the doctor's visit.
+- The employee keeps the manager informed about the expected return date.
+
+### 3.3 Return to work
+
+After an absence of more than 10 working days, the manager and the employee hold a short return-to-work conversation. The goal is to agree on any support or adjustment that is needed, such as a phased return of 4 weeks.
+
+## 4. Family leave
+
+### 4.1 Maternity leave
+
+Employees who give birth receive 26 weeks of maternity leave on full pay. They may add up to 26 further weeks of unpaid leave. Leave can start up to 8 weeks before the expected date of birth. The employee informs the manager and People and Culture at least 15 weeks before the expected date of birth, using form HR-125.
+
+### 4.2 Paternity and partner leave
+
+The partner of a person who gives birth receives 4 weeks of paternity leave on full pay. The leave must be taken within 6 months of the birth and can be taken in one block or in two blocks of 2 weeks. The request is made with form HR-126 at least 8 weeks before the expected date of birth.
+
+### 4.3 Adoption leave
+
+Employees who adopt a child receive the same leave as for a birth: 26 weeks on full pay for the primary carer, and 4 weeks on full pay for the second parent.
+
+### 4.4 Parental leave
+
+Each parent may take up to 18 weeks of unpaid parental leave per child until the child is 8 years old. At least 4 weeks of notice are needed. Parental leave is taken in blocks of at least 1 week, with a maximum of 4 weeks per year, unless the manager agrees otherwise.
+
+### 4.5 Carers' leave
+
+Employees who care for a sick or elderly relative can take up to 5 days of paid carers' leave per year. Longer care needs can be covered by unpaid leave (section 6).
+
+## 5. Special leave
+
+All special leave is paid and is not deducted from annual leave.
+
+| Reason | Paid days |
+| Marriage or registered partnership of the employee | 3 days |
+| Death of a spouse, partner, child or parent | 5 days |
+| Death of a sibling or grandparent | 3 days |
+| Death of another close relative or friend | 1 day |
+| Moving to a new home (once per calendar year) | 1 day |
+| Birth of a grandchild | 1 day |
+| Emergency at home (burst pipe, fire, sudden illness of a dependant) | 2 days per year |
+| Jury service or a court summons as a witness | for the duration, with the court allowance paid to the company |
+| Blood or stem cell donation | half a day |
+| Volunteering for an approved charity | 2 days per year |
+| Study leave for an approved course or exam | 5 days per year |
+| Two floating religious or cultural holidays | 2 days per year |
+
+For bereavement leave, the employee informs the manager as soon as possible. Proof is not required. For marriage leave, the days can be taken within 6 months of the date of the wedding.
+
+## 6. Unpaid leave and sabbatical
+
+### 6.1 Unpaid leave
+
+Employees who have completed their probation can ask for unpaid leave of up to 3 months. The request is sent to the manager at least 8 weeks in advance and needs the approval of the head of department. Pension and health insurance continue during the first 4 weeks of unpaid leave. After that, the employee can continue them by paying the full contribution.
+
+### 6.2 Sabbatical
+
+After 7 years of service, employees can take a paid sabbatical of 4 weeks, in addition to annual leave. The sabbatical is requested with form HR-130 at least 6 months in advance and must be taken within 24 months. It can be combined with annual leave for up to 8 weeks in total. A second sabbatical is possible after another 7 years.
+
+## 7. Appointments and short absences
+
+Employees may attend medical and dental appointments during working hours when these cannot reasonably be arranged outside working hours. They tell the manager in advance and try to keep the absence short. Appointments of more than 2 hours are recorded as half a day of sick leave. Antenatal appointments are always paid and are not deducted from any leave.
+
+## 8. Cancelling and changing leave
+
+An employee can cancel approved leave up to 2 working days before it starts. Changing approved leave needs a new request. The company may ask an employee to cancel approved leave only in a real emergency, with at least 10 working days notice, and then pays the documented costs that cannot be refunded.
+
+## 9. Frequently asked situations
+
+- If a public holiday falls during annual leave, the public holiday is not deducted from the leave.
+- If an employee becomes ill during annual leave and has a medical certificate, the days of illness are counted as sick leave and the annual leave days are returned.
+- Leave in half days is possible for annual leave, in the morning (until 13:00) or the afternoon (from 13:00).
+- When an employee changes from full-time to part-time during the year, the entitlement is recalculated pro rata for each period.
+- Leave balances are visible at any time in PeopleHub under My Time.
+
+## 10. Responsibilities
+
+Employees plan their leave early and keep their balance up to date. Managers approve leave fairly, make sure the team stays able to work, and make sure that every team member takes the minimum of 10 consecutive working days. People and Culture owns this policy, reviews it every year in November, and publishes changes at least 30 days before they take effect.

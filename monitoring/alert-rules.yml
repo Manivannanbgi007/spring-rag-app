@@ -1,0 +1,119 @@
+# Alert rules: when should a person be told that something is wrong?
+# Prometheus checks every rule every 15 seconds. An alert fires when the condition has been true for the time
+# in "for:". See the "Alerts" page of Prometheus (http://localhost:9190/alerts).
+#
+# Sending the alerts to e-mail or chat needs one more component (Alertmanager). It is not part of this project:
+# add it when there is somewhere to send the messages to.
+#
+# The numbers are starting points. Look at your real traffic for a week, then change them.
+
+groups:
+  - name: availability
+    rules:
+      - alert: ApplicationDown
+        expr: up{job="spring-rag-app"} == 0
+        for: 1m
+        labels: {severity: critical}
+        annotations:
+          summary: "The application cannot be reached by Prometheus"
+
+  - name: model-providers
+    rules:
+      - alert: ModelProviderFailing
+        # more than 20 percent of the calls to a model failed or timed out in the last 5 minutes
+        expr: |
+          sum by (dependency) (rate(rag_model_call_seconds_count{outcome=~"failure|timeout"}[5m]))
+            / sum by (dependency) (rate(rag_model_call_seconds_count[5m])) > 0.2
+        for: 5m
+        labels: {severity: warning}
+        annotations:
+          summary: "Calls to the {{ $labels.dependency }} model are failing ({{ $value | humanizePercentage }})"
+
+      - alert: CircuitBreakerOpen
+        # 2 = OPEN: the model failed so often that calls are refused. Users get limited answers.
+        expr: rag_circuit_state == 2
+        for: 1m
+        labels: {severity: critical}
+        annotations:
+          summary: "The circuit breaker of the {{ $labels.dependency }} model is open: users get limited answers"
+
+      - alert: DegradedAnswers
+        expr: sum(rate(rag_chat_seconds_count{degraded="true"}[5m])) > 0
+        for: 5m
+        labels: {severity: warning}
+        annotations:
+          summary: "Users have received limited answers for 5 minutes (a model was unavailable)"
+
+  - name: speed
+    rules:
+      - alert: SlowAnswers
+        # 95 of 100 questions should be answered within 30 seconds (this is a CPU model; a GPU or cloud model is much faster)
+        expr: histogram_quantile(0.95, sum by (le) (rate(rag_chat_seconds_bucket[10m]))) > 30
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: "95 percent of the answers take longer than 30 seconds"
+
+      - alert: SlowEmbedding
+        expr: histogram_quantile(0.95, sum by (le) (rate(rag_stage_seconds_bucket{stage="embedding"}[10m]))) > 5
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: "The embedding model is slow (p95 above 5 seconds)"
+
+  - name: cost
+    rules:
+      - alert: CostSpike
+        # More than 5 US dollars in one hour. With local models the cost is 0, so this never fires.
+        expr: sum(increase(rag_cost_usd_total[1h])) > 5
+        labels: {severity: warning}
+        annotations:
+          summary: "The estimated model cost of the last hour is {{ $value | humanize }} US dollars"
+
+      - alert: TokenUseSpike
+        # five times more tokens than the average of the last day
+        expr: |
+          sum(rate(rag_tokens_total[15m]))
+            > 5 * sum(rate(rag_tokens_total[1d])) and sum(rate(rag_tokens_total[15m])) > 1
+        for: 15m
+        labels: {severity: warning}
+        annotations:
+          summary: "Token use is more than 5 times the daily average"
+
+  - name: quality-and-safety
+    rules:
+      - alert: IngestionFailures
+        expr: sum(increase(rag_ingestion_seconds_count{outcome="failed"}[15m])) > 0
+        labels: {severity: warning}
+        annotations:
+          summary: "Documents failed to process in the last 15 minutes"
+
+      - alert: ManyQuestionsNotAnswered
+        # more than half of the questions found no answer, over 30 minutes, with at least 20 questions
+        expr: |
+          sum(increase(rag_chat_seconds_count{outcome="not_found"}[30m]))
+            / sum(increase(rag_chat_seconds_count[30m])) > 0.5
+          and sum(increase(rag_chat_seconds_count[30m])) >= 20
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: "More than half of the questions get 'not found': documents missing, or the search is broken?"
+
+      - alert: AnswersRejectedAsUnsupported
+        # the model wrote things that are not in the documents (hallucination, or an attack on the prompt)
+        expr: sum(increase(rag_answer_rejected_total[1h])) > 10
+        labels: {severity: warning}
+        annotations:
+          summary: "More than 10 answers in an hour were rejected because the documents do not support them"
+
+      - alert: PromptInjectionAttempts
+        expr: sum(increase(rag_prompt_injection_removed_total[1h])) > 0
+        labels: {severity: info}
+        annotations:
+          summary: "Sentences that look like orders to the model were found in documents (check the application log)"
+
+      - alert: ManyRateLimitedRequests
+        expr: sum(increase(rag_ratelimit_rejected_total[10m])) > 50
+        labels: {severity: info}
+        annotations:
+          summary: "More than 50 requests were refused by the rate limits in 10 minutes"

@@ -1,0 +1,16 @@
+# Prometheus: collects the numbers (metrics) of the application every 15 seconds and checks the alert rules.
+# Started with:  docker compose --profile monitoring up -d       Open: http://localhost:9190
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  - alert-rules.yml
+
+scrape_configs:
+  - job_name: spring-rag-app
+    metrics_path: /actuator/prometheus
+    static_configs:
+      # The application runs on your computer (not in Docker), so the container reaches it as "host.docker.internal"
+      - targets: ["host.docker.internal:8110"]
